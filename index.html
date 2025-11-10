@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kanlungan - Anonymous Teletherapy App</title>
+    <title>Kanlungan</title>
+    <meta name="description" content="Kanlungan is an anonymous teletherapy mobile application providing confidential mental health support through licensed professionals, AI chatbot, and self-help tools.">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header & Navigation -->
@@ -18,6 +20,7 @@
                 </a>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
+                    <li><a href="#crisis">The Crisis</a></li>
                     <li><a href="#features">Features</a></li>
                     <li><a href="#technology">Technology</a></li>
                     <li><a href="#team">Our Team</a></li>
@@ -32,37 +35,86 @@
     <!-- Home Section -->
     <section id="home" class="hero">
         <div class="container hero-content">
-            <h1>Kanlungan: Your Digital Sanctuary</h1>
-            <p>An Anonymous Teletherapy Mobile Application for Mental Health Support</p>
-            <p>Welcome to Kanlungan, a multi-platform digital ecosystem developed to provide accessible, confidential, and professional emotional support for the modern age.</p>
-            <a href="#download" class="btn btn-secondary">Start Your Journey</a>
+            <div class="hero-text">
+                <h1>Kanlungan: An Anonymous Teletherapy Mobile Application for Mental Health</h1>
+                <p class="hero-description">Kanlungan (meaning "sanctuary" or "refuge" in Filipino) is a multi-platform digital ecosystem developed to address the growing mental health crisis by providing stigma-free access to licensed professionals and comprehensive self-help tools.</p>
+                <div class="hero-cta">
+                    <a href="#download" class="btn btn-primary">Start Your Journey</a>
+                    <a href="#features" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="app-mockup">
+                    <div class="phone-frame">
+                        <div class="phone-screen">
+                            <img src="images/app_mockup.jpg" alt="Kanlungan App Mockup" class="app-mockup-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Crisis Section -->
     <section id="crisis" class="crisis">
         <div class="container">
-            <h2>The Crisis We Are Solving</h2>
+            <h2>The Mental Health Crisis We're Addressing</h2>
             <div class="crisis-content">
-                <div>
-                    <p>In a world where mental well-being is paramount, we recognize that the greatest barriers to care are often social stigma and the severe shortage of qualified professionals.</p>
-                    <p>Kanlungan (a Filipino term meaning "sanctuary" or "refuge") is your secure, anonymous digital safe space, connecting you to licensed mental health professionals and comprehensive self-help tools, all designed to promote long-term emotional resilience and stability.</p>
-                    <div class="image-placeholder">
-                        Mental Health Crisis Visualization
+                <div class="crisis-text">
+                    <p>Mental health is a growing global concern affecting individuals across all demographics. The stigma surrounding mental illness and the shortage of qualified professionals create significant barriers to care.</p>
+                    <p>In the Philippines, approximately <strong>12.5 million individuals</strong> suffer from mental health conditions, yet access to professional support remains limited, especially in remote areas.</p>
+                    <div class="crisis-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-brain"></i>
+                            <div>
+                                <h4>Stigma & Shame</h4>
+                                <p>Cultural stigma prevents many from seeking help</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-user-md"></i>
+                            <div>
+                                <h4>Professional Shortage</h4>
+                                <p>Severe shortage of mental health professionals</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <div>
+                                <h4>Financial Barriers</h4>
+                                <p>Cost of therapy prevents access for many</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="crisis-stats">
                     <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
                         <div class="stat-number">1 Billion</div>
-                        <div class="stat-label">People globally struggle with mental health conditions</div>
+                        <div class="stat-label">People globally affected by mental disorders</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number">$1 Trillion</div>
-                        <div class="stat-label">Lost annually due to untreated disorders</div>
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-number">$1 Trillion+</div>
+                        <div class="stat-label">Lost annually due to mental health issues</div>
                     </div>
                     <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
                         <div class="stat-number">12.5 Million</div>
-                        <div class="stat-label">Individuals in the Philippines affected by mental illnesses</div>
+                        <div class="stat-label">Filipinos affected by mental health conditions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="stat-number">53</div>
+                        <div class="stat-label">Suicide deaths in Davao City (2022)</div>
                     </div>
                 </div>
             </div>
@@ -72,63 +124,129 @@
     <!-- Features Section -->
     <section id="features" class="features">
         <div class="container">
-            <h2>Our Features</h2>
-            <p style="text-align: center; max-width: 900px; margin: 0 auto 3rem;">Kanlungan is a comprehensive system built on three integrated platforms: the Mobile Application for Users, and Web Platforms for Professionals and Administrators.</p>
+            <div class="section-title">
+                <h2>Our Comprehensive Features</h2>
+                <p>Kanlungan provides a complete ecosystem for mental health support with features for users, professionals, and administrators.</p>
+            </div>
             
-            <h3 style="text-align: center; margin: 3rem 0 2rem; color: var(--primary);">I. The Mobile Application (For Users)</h3>
+            <h3 class="platform-section-title">For Users & Patients</h3>
             <div class="features-grid">
-                <div class="feature-card">
+                <div class="feature-card interactive-card">
+                    <div class="feature-badge free">Free</div>
                     <div class="feature-icon"><i class="fas fa-user-secret"></i></div>
-                    <h3>Anonymous Teletherapy</h3>
-                    <p>Secure, real-time audio and video calls connecting you directly with licensed mental health professionals for confidential one-on-one sessions (Paid Service).</p>
+                    <h3>Anonymous Registration</h3>
+                    <p>Sign up with just a nickname - no personal identification required to get started with basic features.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-users"></i></div>
-                    <h3>Digital Safe Space</h3>
-                    <p>Join a secure, moderated online Community Support forum for peer discussions and connect with others who understand your journey.</p>
+                <div class="feature-card interactive-card">
+                    <div class="feature-badge free">Free</div>
+                    <div class="feature-icon"><i class="fas fa-clipboard-check"></i></div>
+                    <h3>Mental Health Assessment</h3>
+                    <p>Initial curated questions to guide you to the most appropriate support options for your needs.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card interactive-card">
+                    <div class="feature-badge free">Free</div>
                     <div class="feature-icon"><i class="fas fa-robot"></i></div>
-                    <h3>24/7 Crisis Companion</h3>
-                    <p>Access a complimentary AI Chatbot that provides supportive conversations, coping tips, and resource suggestions at any time of day.</p>
+                    <h3>24/7 AI Chatbot</h3>
+                    <p>Gemini AI-powered emotional support available anytime with coping tips and resource suggestions.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card interactive-card">
+                    <div class="feature-badge free">Free</div>
                     <div class="feature-icon"><i class="fas fa-toolbox"></i></div>
-                    <h3>Self-Help Toolkit</h3>
-                    <p>A library of free resources, including soothing calming music, inspirational quotes/mantras, and audiobooks to help manage stress and anxiety.</p>
+                    <h3>Self-Help Resources</h3>
+                    <p>Daily mantras, calming music library, inspirational audiobooks, and quotes to manage stress and anxiety.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
-                    <h3>Progress Tracker</h3>
-                    <p>Monitor your well-being through essential self-management tools such as journaling, symptom tracking, medication tracking, and habit tracking.</p>
+                <div class="feature-card interactive-card">
+                    <div class="feature-badge free">Free</div>
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <h3>Community Forum</h3>
+                    <p>Moderated peer support space to connect with others who understand your journey.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-first-aid"></i></div>
-                    <h3>Emergency Response</h3>
-                    <p>A dedicated Emergency Crisis Button that automatically displays for high-risk conditions and prompts an immediate call to emergency services.</p>
-                </div>
-            </div>
-
-            <div class="image-placeholder" style="margin: 4rem 0;">
-                Mobile Application Screenshots
-            </div>
-
-            <h3 style="text-align: center; margin: 4rem 0 2rem; color: var(--primary);">II. The Web Platform (For Professionals & Admin)</h3>
-            <div class="features-grid">
-                <div class="feature-card">
+                <div class="feature-card interactive-card">
+                    <div class="feature-badge premium">Premium</div>
                     <div class="feature-icon"><i class="fas fa-user-md"></i></div>
-                    <h3>For Mental Health Professionals</h3>
-                    <p>Therapist Dashboard, Session Management tools, Patient Record Access, and Community Forum Management to supervise the safe-space environment.</p>
+                    <h3>One-on-One Therapy</h3>
+                    <p>Secure audio/video sessions with licensed mental health professionals tailored to your needs.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-user-shield"></i></div>
-                    <h3>For Administrators</h3>
-                    <p>Psychologist Verification, System Oversight, and Financial and Payment Oversight to ensure platform integrity and compliance.</p>
+                <div class="feature-card interactive-card">
+                    <div class="feature-badge premium">Premium</div>
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <h3>Group Therapy Sessions</h3>
+                    <p>Virtual group sessions facilitated by professionals for shared healing experiences.</p>
+                </div>
+                <div class="feature-card interactive-card">
+                    <div class="feature-badge premium">Premium</div>
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your mental health journey with detailed insights and personalized recommendations.</p>
+                </div>
+                <div class="feature-card interactive-card">
+                    <div class="feature-badge premium">Premium</div>
+                    <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Professional Assessments</h3>
+                    <p>Comprehensive neurophysiological evaluations by qualified mental health professionals.</p>
+                </div>
+                <div class="feature-card interactive-card">
+                    <div class="feature-badge emergency">Emergency</div>
+                    <div class="feature-icon"><i class="fas fa-first-aid"></i></div>
+                    <h3>Crisis Response</h3>
+                    <p>Emergency button for immediate help access during high-risk situations with direct connection to emergency services.</p>
                 </div>
             </div>
 
-            <div class="image-placeholder" style="margin: 4rem 0;">
-                Web Platform Screenshots
+            <h3 class="platform-section-title">For Mental Health Professionals</h3>
+            <div class="features-grid">
+                <div class="feature-card interactive-card">
+                    <div class="feature-badge professional">Pro</div>
+                    <div class="feature-icon"><i class="fas fa-id-card"></i></div>
+                    <h3>Verified Profiles</h3>
+                    <p>Credential-based registration ensuring only qualified professionals join the platform.</p>
+                </div>
+                <div class="feature-card interactive-card">
+                    <div class="feature-badge professional">Pro</div>
+                    <div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <h3>Client Dashboard</h3>
+                    <p>Comprehensive patient records, session history, and progress tracking in one place.</p>
+                </div>
+                <div class="feature-card interactive-card">
+                    <div class="feature-badge professional">Pro</div>
+                    <div class="feature-icon"><i class="fas fa-tasks"></i></div>
+                    <h3>Assessment Tools</h3>
+                    <p>Create, assign, and evaluate custom assessments for your clients with detailed analytics.</p>
+                </div>
+                <div class="feature-card interactive-card">
+                    <div class="feature-badge professional">Pro</div>
+                    <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <h3>Session Scheduling</h3>
+                    <p>Smart calendar management with automated reminders and appointment confirmations.</p>
+                </div>
+            </div>
+
+            <h3 class="platform-section-title">For Administrators</h3>
+            <div class="features-grid">
+                <div class="feature-card interactive-card">
+                    <div class="feature-badge admin">Admin</div>
+                    <div class="feature-icon"><i class="fas fa-user-check"></i></div>
+                    <h3>Professional Verification</h3>
+                    <p>Rigorous license and credential validation process for all mental health professionals.</p>
+                </div>
+                <div class="feature-card interactive-card">
+                    <div class="feature-badge admin">Admin</div>
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>System Monitoring</h3>
+                    <p>Real-time platform oversight with comprehensive analytics and performance tracking.</p>
+                </div>
+                <div class="feature-card interactive-card">
+                    <div class="feature-badge admin">Admin</div>
+                    <div class="feature-icon"><i class="fas fa-money-check"></i></div>
+                    <h3>Financial Management</h3>
+                    <p>Secure payment processing, transaction monitoring, and financial reporting systems.</p>
+                </div>
+                <div class="feature-card interactive-card">
+                    <div class="feature-badge admin">Admin</div>
+                    <div class="feature-icon"><i class="fas fa-comments"></i></div>
+                    <h3>Content Moderation</h3>
+                    <p>Community forum supervision and user support systems to maintain a safe environment.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -136,53 +254,70 @@
     <!-- Technology Section -->
     <section id="technology" class="technology">
         <div class="container">
-            <h2>Our Technology</h2>
+            <h2>Our Technology Stack</h2>
+            <p class="section-intro">Kanlungan was developed using a modern, secure, and scalable technology stack, prioritizing user privacy and seamless experience across all platforms.</p>
+            
             <div class="tech-content">
-                <div>
-                    <p>Kanlungan was developed using a modern, scalable, and secure technology stack, prioritizing user privacy and a seamless experience. The project was built using the Agile Scrum framework to ensure continuous feature testing and refinement.</p>
-                    <table class="tech-table">
-                        <thead>
-                            <tr>
-                                <th>Category</th>
-                                <th>Technology/Tool Used</th>
-                                <th>Rationale</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Framework & Language</td>
-                                <td>Flutter (Framework) and Dart (Language)</td>
-                                <td>Enables multi-platform development for a consistent user experience on both web and mobile.</td>
-                            </tr>
-                            <tr>
-                                <td>Database & Backend</td>
-                                <td>Firebase (Firestore)</td>
-                                <td>Provides a reliable, scalable cloud infrastructure for secure data storage.</td>
-                            </tr>
-                            <tr>
-                                <td>Financial Integration</td>
-                                <td>PayMongo</td>
-                                <td>Used for secure management of paid services and transactions.</td>
-                            </tr>
-                            <tr>
-                                <td>Security & Compliance</td>
-                                <td>Philippine Data Privacy Act of 2012</td>
-                                <td>Strict adherence to legal and ethical compliance, ensuring user consent and data minimization.</td>
-                            </tr>
-                            <tr>
-                                <td>Development Tools</td>
-                                <td>Visual Studio Code, Android Studio, Git</td>
-                                <td>Standard industry tools for efficient coding, debugging, and version control.</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="tech-stack">
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-flutter"></i>
+                        </div>
+                        <div class="tech-details">
+                            <h3>Flutter Framework</h3>
+                            <p>Cross-platform development for consistent user experience on both iOS and Android</p>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="tech-details">
+                            <h3>Firebase</h3>
+                            <p>Secure cloud database and backend services for real-time data synchronization</p>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="tech-details">
+                            <h3>End-to-End Encryption</h3>
+                            <p>All communications and data are encrypted to ensure complete privacy</p>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="tech-details">
+                            <h3>Gemini AI</h3>
+                            <p>Advanced AI chatbot providing 24/7 mental health support and resources</p>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <div class="tech-details">
+                            <h3>PayMongo</h3>
+                            <p>Secure payment processing for professional services and transactions</p>
+                        </div>
+                    </div>
                 </div>
+                
                 <div class="tech-visual">
-                    <h3>Powering Confidential Care</h3>
-                    <p>Our technology stack ensures that your data is protected with enterprise-grade security while providing a seamless experience across all devices.</p>
-                    <p>The application follows the Agile Scrum framework for continuous improvement and feature refinement based on user feedback.</p>
-                    <div class="image-placeholder" style="background: rgba(255,255,255,0.2); margin-top: 2rem;">
-                        Technology Architecture Diagram
+                    <h3>Security & Compliance</h3>
+                    <p>Kanlungan strictly adheres to the Philippine Data Privacy Act of 2012, ensuring:</p>
+                    <ul class="compliance-list">
+                        <li><i class="fas fa-check-circle"></i> User consent for data collection</li>
+                        <li><i class="fas fa-check-circle"></i> Data minimization principles</li>
+                        <li><i class="fas fa-check-circle"></i> Secure storage and transmission</li>
+                        <li><i class="fas fa-check-circle"></i> Right to data deletion</li>
+                    </ul>
+                    <div class="development-approach">
+                        <h4>Development Approach</h4>
+                        <p>Built using Agile Scrum methodology with continuous testing and user feedback integration throughout development.</p>
                     </div>
                 </div>
             </div>
@@ -190,87 +325,140 @@
     </section>
 
     <!-- Our Team Section -->
-    <section id="team" class="team">
-        <div class="container">
-            <h2>Our Team</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">The development of Kanlungan is the result of a dedicated collaboration of innovators, developers, and advocates committed to bridging the mental healthcare gap in our community. Our team came together with a singular, shared vision: to create a secure, accessible, and compliant platform that genuinely impacts well-being.</p>
-            
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="member-photo" style="background: #e9ecef; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-user" style="font-size: 3rem; color: var(--primary);"></i>
-                    </div>
-                    <h3 class="member-name">Drich Louella F. Rota</h3>
-                    <p class="member-role">Project Leader and Lead Research and Technical Writer</p>
+<section id="team" class="team">
+    <div class="container">
+        <h2>Our Development Team</h2>
+        <p class="section-intro">The Kanlungan platform was developed by a dedicated team of IT students from Assumption College of Davao, committed to creating impactful solutions for mental health support.</p>
+        
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-photo">
+                    <img src="images/drich.png" alt="Drich Louella F. Rota">
                 </div>
-                <div class="team-member">
-                    <div class="member-photo" style="background: #e9ecef; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-user" style="font-size: 3rem; color: var(--primary);"></i>
-                    </div>
-                    <h3 class="member-name">Conrod Ingelio R. De Guzman</h3>
-                    <p class="member-role">Lead Programmer and Database Specialist</p>
+                <h3 class="member-name">Drich Louella F. Rota</h3>
+                <p class="member-role">Project Leader and Lead Research & Technical Writer</p>
+                <p class="member-bio">Oversaw project coordination, research documentation, and system analysis.</p>
+            </div>
+            <div class="team-member">
+                <div class="member-photo">
+                    <img src="images/conrod.png" alt="Conrod Ingelio R. De Guzman">
                 </div>
-                <div class="team-member">
-                    <div class="member-photo" style="background: #e9ecef; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-user" style="font-size: 3rem; color: var(--primary);"></i>
-                    </div>
-                    <h3 class="member-name">Rhea B. Badar</h3>
-                    <p class="member-role">Lead UI/UX Designer and Assistant Programmer (Mobile Application)</p>
+                <h3 class="member-name">Conrod Ingelio R. De Guzman</h3>
+                <p class="member-role">Lead Programmer</p>
+                <p class="member-bio">Developed core application functionality, database architecture, and system integration.</p>
+            </div>
+            <div class="team-member">
+                <div class="member-photo">
+                    <img src="images/rhea.png" alt="Rhea B. Badar">
                 </div>
-                <div class="team-member">
-                    <div class="member-photo" style="background: #e9ecef; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-user" style="font-size: 3rem; color: var(--primary);"></i>
-                    </div>
-                    <h3 class="member-name">Jestephen Negro</h3>
-                    <p class="member-role">Lead Quality Assurance and Assistant Technical Writer</p>
+                <h3 class="member-name">Rhea B. Badar</h3>
+                <p class="member-role">UI/UX Designer & Assistant Programmer</p>
+                <p class="member-bio">Designed user interfaces, experience flows, and contributed to mobile application development.</p>
+            </div>
+            <div class="team-member">
+                <div class="member-photo">
+                    <img src="images/jes.png" alt="Jestephen Negro">
                 </div>
+                <h3 class="member-name">Jestephen Negro</h3>
+                <p class="member-role">Quality Assurance & Technical Writer</p>
+                <p class="member-bio">Ensured system reliability through comprehensive testing and documentation.</p>
             </div>
         </div>
-    </section>
+        
+        <div class="team-mission">
+            <h3>Our Mission</h3>
+            <p>To bridge the mental healthcare gap in the Philippines by providing accessible, stigma-free, and professional emotional support through innovative technology.</p>
+        </div>
+    </div>
+</section>
 
     <!-- Download Section -->
-    <section id="download" class="download">
-        <div class="container download-content">
-            <h2>Download Kanlungan</h2>
-            <p>Start Your Journey to Well-being Today. Download the Kanlungan Mobile Application now to connect with professionals, join the community, and access our full suite of free self-help tools. The app is designed for Android users only.</p>
+<section id="download" class="download">
+    <div class="container download-content">
+        <h2>Download Kanlungan Today</h2>
+        <p class="section-intro">Start your journey to better mental health. Download the Kanlungan mobile application to access professional support, community connections, and self-help resources.</p>
+        
+        <div class="download-options">
             <div class="app-badge">
-                <i class="fab fa-android"></i>
+                <div class="badge-icon">
+                    <i class="fab fa-android"></i>
+                </div>
                 <h3>Android App</h3>
-                <p>Available Now</p>
-                <a href="#" class="btn btn-accent" style="margin-top: 1rem;">Download</a>
+                <p>Download the APK file directly</p>
+                <a href="#" class="btn btn-accent">Download APK</a>
+                <div class="app-requirements">
+                    <p><strong>Requirements:</strong> Android 8.0+</p>
+                    <p><strong>Size:</strong> 95 MB</p>
+                    <p><strong>Format:</strong> APK File</p>
+                </div>
             </div>
         </div>
-    </section>
+
+        
+        <div class="download-features">
+            <h3>What You'll Get</h3>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Free initial mental health assessment</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Access to AI chatbot and self-help resources</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Anonymous community forum</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Option to connect with licensed professionals</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- Feedback Section -->
     <section id="feedback" class="feedback">
         <div class="container">
-            <h2>Your Feedback Matters</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">Your Voice Shapes Our Sanctuary. As we continuously refine Kanlungan, your real-world insights are invaluable. Share your experience, feedback, or suggestions about our platform or mission.</p>
+            <h2>Share Your Experience</h2>
+            <p class="section-intro">Your feedback helps us improve Kanlungan and better serve our community. Share your thoughts, suggestions, or experiences with our platform.</p>
             
-            <div class="feedback-form">
-                <form id="feedbackForm" action="submit_feedback.php" method="POST">
-                    <div class="form-group">
-                        <label for="name">Name (Optional)</label>
-                        <input type="text" id="name" name="name" class="form-control" placeholder="Your name">
+            <div class="feedback-container">
+                <div class="feedback-form-container">
+                    <h3>Leave Your Feedback</h3>
+                    <form id="feedbackForm" class="feedback-form">
+                        <div class="form-group">
+                            <label for="name">Name (Optional)</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email (Optional)</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Feedback *</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Share your thoughts, suggestions, or experience with Kanlungan..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                    </form>
+                </div>
+                
+                <div class="feedback-display">
+                    <h3>What Our Community Says</h3>
+                    <div id="feedbackList" class="feedback-list">
+                        <!-- Feedback items will be loaded here via JavaScript -->
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email (Optional)</label>
-                        <input type="email" id="email" name="email" class="form-control" placeholder="Your email">
+                    <div class="feedback-stats">
+                        <div class="stat">
+                            <span class="stat-number" id="totalFeedback">0</span>
+                            <span class="stat-label">Total Feedbacks</span>
+                        </div>
+                        <button id="refreshFeedback" class="btn btn-secondary">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Your Feedback *</label>
-                        <textarea id="message" name="message" class="form-control" placeholder="Share your thoughts, suggestions, or experience with Kanlungan..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn" style="width: 100%;">Submit Feedback</button>
-                </form>
-            </div>
-            
-            <!-- Display area for previous feedback -->
-            <div id="feedbackDisplay" style="margin-top: 4rem;">
-                <h3 style="text-align: center;">What Our Users Say</h3>
-                <div id="feedbackList" style="max-width: 800px; margin: 2rem auto;">
-                    <!-- Feedback items will be loaded here via JavaScript -->
                 </div>
             </div>
         </div>
@@ -280,37 +468,51 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div>
+                <div class="footer-brand">
                     <div class="footer-logo">
                         <img src="images/Klogo.png" alt="Kanlungan Logo" class="logo-img">
                         Kanlungan
                     </div>
-                    <p style="color: rgba(255,255,255,0.8);">Your digital sanctuary for mental health support.</p>
+                    <p>Your digital sanctuary for mental health support. Providing accessible, confidential, and professional emotional care.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
                 </div>
-                <div>
-                    <h3 style="color: white; margin-bottom: 1.5rem;">Quick Links</h3>
-                    <ul class="footer-links">
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
                         <li><a href="#home">Home</a></li>
+                        <li><a href="#crisis">The Crisis</a></li>
                         <li><a href="#features">Features</a></li>
                         <li><a href="#download">Download</a></li>
                         <li><a href="#feedback">Feedback</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h3 style="color: white; margin-bottom: 1.5rem;">Connect With Us</h3>
-                    <div class="contact-links">
-                        <a href="mailto:kanlungan.support@gmail.com" class="contact-link">
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <span>kanlungan.support@gmail.com</span>
-                        </a>
-                        <a href="tel:+639123456789" class="contact-link">
+                            <span>kanlungan.team@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span>+63 912 345 6789</span>
-                        </a>
+                            <span>+63 976 311 3842</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Assumption College of Davao</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <p class="copyright">&copy; 2023 Kanlungan. All rights reserved. | Mental Health Support When You Need It</p>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2023 Kanlungan. All rights reserved.</p>
+                <p class="tagline">Mental Health Support When You Need It Most</p>
+            </div>
         </div>
     </footer>
 
