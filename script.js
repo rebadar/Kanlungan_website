@@ -94,72 +94,16 @@ async function fetchFeedbacksFromDatabase() {
         // For demo purposes, we'll use localStorage
         const storedFeedbacks = JSON.parse(localStorage.getItem('kanlungan-feedbacks') || '[]');
         
-        // If no stored feedbacks, use sample data
-        if (storedFeedbacks.length === 0) {
-            return getSampleFeedbacks();
-        }
-        
         return storedFeedbacks;
     } catch (error) {
         console.error('Error fetching feedbacks:', error);
-        // Return sample data if storage fails
-        return getSampleFeedbacks();
+        // Return an empty array if storage fails
+        return [];
     }
 }
 
 // Sample feedbacks as fallback
-function getSampleFeedbacks() {
-    return [
-        { 
-            id: 1, 
-            name: "Maria Santos", 
-            message: "This app has been a lifesaver for me. The anonymous feature made me feel safe to seek help when I needed it most. The AI chatbot is surprisingly helpful during late nights when I can't sleep.", 
-            date: "2023-10-15" 
-        },
-        { 
-            id: 2, 
-            name: "Juan Dela Cruz", 
-            message: "The self-help tools are very useful, especially the calming music when I can't sleep at night. The progress tracker helped me see my improvement over time. Thank you for this app!", 
-            date: "2023-10-10" 
-        },
-        { 
-            id: 3, 
-            name: "Anonymous", 
-            message: "The community forum is a great place to connect with others who understand what I'm going through. It's comforting to know I'm not alone in my struggles.", 
-            date: "2023-10-05" 
-        },
-        { 
-            id: 4, 
-            name: "Sarah Lim", 
-            message: "The progress tracker helped me see my improvement over time. I never realized how far I've come! The journaling feature is particularly helpful for organizing my thoughts.", 
-            date: "2023-09-28" 
-        },
-        { 
-            id: 5, 
-            name: "Miguel Torres", 
-            message: "Having 24/7 access to the AI chatbot has been incredibly helpful during my lonely nights. The responses are thoughtful and actually helpful, not just generic advice.", 
-            date: "2023-09-22" 
-        },
-        { 
-            id: 6, 
-            name: "Anonymous", 
-            message: "The anonymous therapy sessions changed my life. No judgment, just pure support. My therapist was understanding and provided practical strategies that actually work.", 
-            date: "2023-09-15" 
-        },
-        { 
-            id: 7, 
-            name: "Andrea Gomez", 
-            message: "As a college student, the financial barrier was always an issue. Kanlungan's free resources and affordable paid sessions made professional help accessible for me.", 
-            date: "2023-09-10" 
-        },
-        { 
-            id: 8, 
-            name: "Robert Tan", 
-            message: "The emergency button feature gave me peace of mind. Knowing there's immediate help available during a crisis is incredibly reassuring for someone with anxiety.", 
-            date: "2023-09-05" 
-        }
-    ];
-}
+// [REMOVED] The getSampleFeedbacks() function was removed.
 
 // Function to display a single feedback
 function displaySingleFeedback(feedback) {
@@ -226,12 +170,7 @@ function updateFeedbackCount() {
 
 // Load feedbacks on page load
 window.addEventListener('DOMContentLoaded', async function() {
-    // Initialize with sample data if no data exists
-    const existingFeedbacks = JSON.parse(localStorage.getItem('kanlungan-feedbacks') || '[]');
-    if (existingFeedbacks.length === 0) {
-        const sampleFeedbacks = getSampleFeedbacks();
-        localStorage.setItem('kanlungan-feedbacks', JSON.stringify(sampleFeedbacks));
-    }
+    // [REMOVED] The logic that pre-filled localStorage with sample data is gone.
     
     const feedbacks = await fetchFeedbacksFromDatabase();
     displayFeedbacks(feedbacks);
