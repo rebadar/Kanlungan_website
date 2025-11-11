@@ -1,4 +1,7 @@
 <?php
+// Set header to return JSON content
+header('Content-Type: application/json');
+
 include 'config.php';
 
 $database = new Database();
@@ -21,51 +24,28 @@ try {
     
     $feedbacks = array();
     
-    if ($stmt->rowCount() > 0) {
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $feedbacks[] = array(
-                "id" => $row['id'],
-                "name" => $row['name'],
-                "message" => $row['message'],
-                "date" => date('Y-m-d', strtotime($row['created_at']))
-            );
-        }
-        
-        http_response_code(200);
-        echo json_encode(array(
-            "status" => "success",
-            "data" => $feedbacks
-        ));
-    } else {
-        // Return sample feedbacks if database is empty
-        $sample_feedbacks = array(
-            array(
-                "id" => 1,
-                "name" => "Maria Santos",
-                "message" => "This app has been a lifesaver for me. The anonymous feature made me feel safe to seek help when I needed it most.",
-                "date" => "2023-10-15"
-            ),
-            array(
-                "id" => 2,
-                "name" => "Juan Dela Cruz",
-                "message" => "The self-help tools are very useful, especially the calming music when I can't sleep at night. Thank you for this app!",
-                "date" => "2023-10-10"
-            ),
-            array(
-                "id" => 3,
-                "name" => "Anonymous",
-                "message" => "The community forum is a great place to connect with others who understand what I'm going through.",
-                "date" => "2023-10-05"
-            )
+    // Fetch all results into the feedbacks array
+    // This loop will simply not run if rowCount() is 0,
+    // resulting in an empty $feedbacks array.
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $feedbacks[] = array(
+            "id" => $row['id'],
+            "name" => $row['name'],
+            "message" => $row['message'],
+            "date" => date('Y-m-d', strtotime($row['created_at']))
         );
-        
-        echo json_encode(array(
-            "status" => "success",
-            "data" => $sample_feedbacks,
-            "note" => "Sample data - database is empty"
-        ));
     }
+    
+    // Always return a success response
+    // The 'data' key will contain the results or an empty array
+    http_response_code(200);
+    echo json_encode(array(
+        "status" => "success",
+        "data" => $feedbacks
+    ));
+
 } catch(PDOException $exception) {
+    // Handle database errors
     http_response_code(500);
     echo json_encode(array("status" => "error", "message" => $exception->getMessage()));
 }
