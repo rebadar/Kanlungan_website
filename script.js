@@ -50,60 +50,94 @@ document.getElementById('feedbackForm').addEventListener('submit', function(e) {
     
     // Create feedback object
     const feedback = {
-        id: Date.now(),
         name: name,
         email: email,
-        message: message,
-        date: new Date().toISOString().split('T')[0] // Format as YYYY-MM-DD
+        message: message
     };
     
-    // Submit to database
+    // Submit to database via API
     submitFeedbackToDatabase(feedback);
 });
 
-// Function to submit feedback to database
+// Function to submit feedback to database (NOW USES PHP)
 async function submitFeedbackToDatabase(feedback) {
     try {
-        // In a real application, this would be an API call to your backend
-        // For demo purposes, we'll use localStorage
-        const existingFeedbacks = JSON.parse(localStorage.getItem('kanlungan-feedbacks') || '[]');
-        existingFeedbacks.unshift(feedback); // Add new feedback to the beginning
-        localStorage.setItem('kanlungan-feedbacks', JSON.stringify(existingFeedbacks));
+        // This is the API call to your backend
+        const response = await fetch('api/submit_feedback.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(feedback) // Send the feedback object
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+
+        if (result.status === 'success') {
+            // Backend was successful.
+            // We use the data returned from the PHP script.
+            
+            // Re-format the 'created_at' (e.g., "2023-10-10 15:00:00")
+            // to just 'date' (e.g., "2023-10-10") for display.
+            const newFeedbackForDisplay = {
+                ...result.data,
+                date: result.data.created_at.split(' ')[0] 
+            };
+
+            // Add the new feedback to the display
+            displaySingleFeedback(newFeedbackForDisplay);
+            
+            // Update feedback count
+            updateFeedbackCount();
+            
+            // Reset form
+            document.getElementById('feedbackForm').reset();
+            
+            // Show success message
+            showNotification('Thank you for your feedback! Your voice helps shape our sanctuary.', 'success');
         
-        // Add the new feedback to the display
-        displaySingleFeedback(feedback);
-        
-        // Update feedback count
-        updateFeedbackCount();
-        
-        // Reset form
-        document.getElementById('feedbackForm').reset();
-        
-        // Show success message
-        showNotification('Thank you for your feedback! Your voice helps shape our sanctuary.', 'success');
+        } else {
+            // Handle API-level errors (e.g., "Message is required")
+            console.error('Error from API:', result.message);
+            showNotification(result.message || 'Error submitting feedback.', 'error');
+        }
     } catch (error) {
         console.error('Error:', error);
         showNotification('Error submitting feedback. Please try again.', 'error');
     }
 }
 
-// Function to fetch feedbacks from database
+// Function to fetch feedbacks from database (NOW USES PHP)
 async function fetchFeedbacksFromDatabase() {
     try {
-        // In a real application, this would be an API call to your backend
-        // For demo purposes, we'll use localStorage
-        const storedFeedbacks = JSON.parse(localStorage.getItem('kanlungan-feedbacks') || '[]');
+        // This is the API call to get_feedbacks.php
+        // We'll ask for 6, as per your PHP script's default
+        const response = await fetch('api/get_feedbacks.php?limit=6');
         
-        return storedFeedbacks;
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const result = await response.json();
+        
+        if (result.status === 'success') {
+            return result.data; // This will be an array (empty or with data)
+        } else {
+            console.error('Error from API:', result.message);
+            return []; // Return empty on API error
+        }
     } catch (error) {
         console.error('Error fetching feedbacks:', error);
-        // Return an empty array if storage fails
+        // Return empty array if fetch fails
         return [];
     }
 }
 
-// Sample feedbacks as fallback
-// [REMOVED] The getSampleFeedbacks() function was removed.
+// [REMOVED] The mock data function getSampleFeedbacks() is gone.
 
 // Function to display a single feedback
 function displaySingleFeedback(feedback) {
@@ -139,7 +173,9 @@ function createFeedbackElement(feedback) {
 // Function to format date
 function formatDate(dateString) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('en-US', options);
+    // Create date object, ensuring it doesn't shift timezones
+    const date = new Date(dateString.replace(/-/g, '\/').replace(/ /g, 'T'));
+    return date.toLocaleDateString('en-US', options);
 }
 
 // Function to display all feedbacks
@@ -149,6 +185,8 @@ function displayFeedbacks(feedbacks) {
     
     if (feedbacks.length === 0) {
         feedbackList.innerHTML = '<div class="empty-state" style="text-align: center; padding: 2rem; color: var(--text-light);"><p>No feedbacks yet. Be the first to share your experience!</p></div>';
+        // Make sure count is 0 if list is empty
+        updateFeedbackCount(0); 
         return;
     }
     
@@ -158,25 +196,32 @@ function displayFeedbacks(feedbacks) {
     });
     
     // Update feedback count
-    updateFeedbackCount();
+    updateFeedbackCount(feedbacks.length);
 }
 
 // Function to update feedback count
-function updateFeedbackCount() {
-    const feedbackList = document.getElementById('feedbackList');
-    const feedbackCount = feedbackList.querySelectorAll('.feedback-item').length;
+function updateFeedbackCount(count = null) {
+    let feedbackCount;
+    if (count !== null) {
+        feedbackCount = count;
+    } else {
+        const feedbackList = document.getElementById('feedbackList');
+        feedbackCount = feedbackList.querySelectorAll('.feedback-item').length;
+    }
     document.getElementById('totalFeedback').textContent = feedbackCount;
 }
 
 // Load feedbacks on page load
 window.addEventListener('DOMContentLoaded', async function() {
-    // [REMOVED] The logic that pre-filled localStorage with sample data is gone.
+    // [REMOVED] The logic to add mock data to localStorage is gone.
     
+    // Fetch real data from the database
     const feedbacks = await fetchFeedbacksFromDatabase();
     displayFeedbacks(feedbacks);
     
     // Add refresh button functionality
     document.getElementById('refreshFeedback').addEventListener('click', async function() {
+        showNotification('Refreshing feedbacks...', 'info');
         const feedbacks = await fetchFeedbacksFromDatabase();
         displayFeedbacks(feedbacks);
         showNotification('Feedbacks updated!', 'success');
@@ -188,21 +233,17 @@ window.addEventListener('DOMContentLoaded', async function() {
 
 // Notification system
 function showNotification(message, type = 'info') {
-    // Remove existing notification if any
+    // ... (This function is unchanged, it's perfect)
     const existingNotification = document.querySelector('.notification');
     if (existingNotification) {
         existingNotification.remove();
     }
-    
-    // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
     notification.innerHTML = `
         <span>${message}</span>
         <button class="notification-close">&times;</button>
     `;
-    
-    // Add styles for notification
     const notificationStyles = `
         .notification {
             position: fixed;
@@ -220,19 +261,9 @@ function showNotification(message, type = 'info') {
             max-width: 400px;
             animation: slideIn 0.3s ease;
         }
-        
-        .notification-success {
-            border-left: 4px solid var(--success);
-        }
-        
-        .notification-error {
-            border-left: 4px solid var(--error);
-        }
-        
-        .notification-info {
-            border-left: 4px solid var(--accent);
-        }
-        
+        .notification-success { border-left: 4px solid var(--success); }
+        .notification-error { border-left: 4px solid var(--error); }
+        .notification-info { border-left: 4px solid var(--accent); }
         .notification-close {
             background: none;
             border: none;
@@ -240,30 +271,21 @@ function showNotification(message, type = 'info') {
             cursor: pointer;
             color: var(--text-light);
         }
-        
         @keyframes slideIn {
             from { transform: translateX(100%); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
     `;
-    
-    // Add styles if not already added
     if (!document.querySelector('#notification-styles')) {
         const styleSheet = document.createElement('style');
         styleSheet.id = 'notification-styles';
         styleSheet.textContent = notificationStyles;
         document.head.appendChild(styleSheet);
     }
-    
-    // Add to page
     document.body.appendChild(notification);
-    
-    // Add close functionality
     notification.querySelector('.notification-close').addEventListener('click', () => {
         notification.remove();
     });
-    
-    // Auto remove after 5 seconds
     setTimeout(() => {
         if (notification.parentNode) {
             notification.remove();
@@ -273,11 +295,11 @@ function showNotification(message, type = 'info') {
 
 // Add animation on scroll
 function initScrollAnimations() {
+    // ... (This function is unchanged)
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -285,8 +307,6 @@ function initScrollAnimations() {
             }
         });
     }, observerOptions);
-    
-    // Observe elements to animate
     document.querySelectorAll('.feature-card, .stat-card, .team-member, .tech-item').forEach(el => {
         observer.observe(el);
     });
@@ -294,16 +314,16 @@ function initScrollAnimations() {
 
 // Download button functionality
 document.querySelectorAll('.btn-accent').forEach(button => {
+    // ... (This function is unchanged)
     button.addEventListener('click', function(e) {
         e.preventDefault();
         showNotification('Thank you for your interest! The download will begin shortly.', 'info');
-        // In a real application, this would trigger the actual download
-        // For demo purposes, we'll just show a notification
     });
 });
 
 // iOS notify button
 document.querySelector('.coming-soon .btn').addEventListener('click', function(e) {
+    // ... (This function is unchanged)
     e.preventDefault();
     showNotification('We\'ll notify you when the iOS version is available!', 'info');
 });
